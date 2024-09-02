@@ -14,7 +14,7 @@ public:
     ~HashTable();
     void insert(Node* user);
     Node* lookup(std::string userId);
-    int hash(std::string);
+    int hash(std::string userId);
 };
 
 #endif

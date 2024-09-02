@@ -1,8 +1,9 @@
-#include "Node.hpp"
+#include "node.hpp"
+#include <cstdlib>
 
-Node::Node(std::string userId, std::string password){
+Node::Node(std::string userId){
     this->userId = userId;
-    this->password = password;
+    this->password = generatePW();
 }
 
 Node::Node(Node& nodeToCopy){
@@ -14,11 +15,26 @@ Node::Node(Node& nodeToCopy){
 }
 
 Node::~Node(){
-    delete this;
 }
 
-void Node::setPassword(std::string password){
-    this->password = password;
+std::string Node::generatePW(){
+    //97 to 122
+    //122 - 97
+    srand(time(0));
+    std::string password = "";
+    for (int i = 0; i < 9; i++){
+        password += char(97 + ( rand() % (122 - 97) ));
+    }
+    return password;
+}
+
+void Node::setUserId(std::string userId){
+    this->userId = userId;
+}
+
+void Node::setPassword(){
+    if (password == "")
+        this->password = generatePW();
 }
 
 void Node::setEncrypted(std::string encrypted){
@@ -34,7 +50,7 @@ void Node::setNext(Node* next){
 }
 
 std::string Node::getUserId(){
-    return password;
+    return userId;
 }
 
 std::string Node::getPassword(){

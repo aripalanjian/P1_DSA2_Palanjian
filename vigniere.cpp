@@ -18,8 +18,13 @@ std::string Vigniere::encrypt(std::string password){
 
         int offset = int(key.at(keyPos)) - 97;
         int asciiValue = int(password.at(i)) + offset;
+        
         if (asciiValue == 123){
             encrypted += ' ';
+        } else if (asciiValue > 123) {
+            int wrapValue = asciiValue - 123;
+            asciiValue = 97 + wrapValue;
+            encrypted += char(asciiValue);
         } else {
             encrypted += char(asciiValue);
         }

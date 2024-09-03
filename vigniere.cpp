@@ -18,7 +18,7 @@ std::string Vigniere::encrypt(std::string password){
 
         int offset = int(key.at(keyPos)) - 97;
         int asciiValue = int(password.at(i)) + offset;
-        
+
         if (asciiValue == 123){
             encrypted += ' ';
         } else if (asciiValue > 123) {
@@ -42,15 +42,27 @@ std::string Vigniere::decode(std::string encrypted){
         } else {
             keyPos = i;
         }
+        // std::cout << keyPos << std::endl;
 
         // TODO:
         //     Do opposite calculation 
-        // int offset = int(key.at(keyPos)) - 97;
-        // int asciiValue = int(password.at(i)) + offset;
-        // if (asciiValue == 123){
-        //     encrypted += ' ';
-        // } else {
-        //     encrypted += char(asciiValue);
-        // }
+        int offset = int(key.at(keyPos)) - 97;
+        int asciiValue;
+        if (encrypted.at(i) == ' '){
+            asciiValue = 123 - offset;
+        } else {
+            asciiValue = int(encrypted.at(i)) - offset;
+        }
+
+        if (asciiValue == 123){
+            decoded += ' ';
+        } else if (asciiValue < 97) {
+            int wrapValue = 97 - asciiValue;
+            asciiValue = 123 - wrapValue;
+            decoded += char(asciiValue);
+        } else {
+            decoded += char(asciiValue);
+        }
     }
+    return decoded;
 }

@@ -33,6 +33,7 @@ int main(){
     passwordTest(testNode.getPassword());
     std::string encrypted = cypher.encrypt(testNode.getPassword());
     std::cout << "Encrypted Password: " << encrypted << std::endl;
+    std::cout << "Decoded Password: " << cypher.decode(encrypted) << std::endl;
 
     std::cout << "Node1: " << testNode.getUserId() << " " << testNode.getPassword() << std::endl;
     

@@ -6,10 +6,12 @@ HashTable::HashTable(){
 
 HashTable::~HashTable(){
     for (int i = 0; i < size; i++){
-        Node* toDelete = &(Table[i]);
-        while(toDelete != nullptr){
-            toDelete = toDelete->getNext();
-            delete &(Table[i]);
+        Node* head = &(Table[i]);
+        Node* next;
+        while(head != nullptr){
+            next = head->getNext();
+            delete head;
+            head = next;
         }
     }
     delete [] Table;

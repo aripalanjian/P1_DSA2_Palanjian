@@ -6,6 +6,12 @@ Node::Node(std::string userId){
     this->password = generatePW();
 }
 
+Node::Node(std::string userId, std::string encrypted){
+    this->userId = userId;
+    this->encrypted = encrypted;
+    // this->password = cypher.decode(encrypted);
+}
+
 Node::Node(Node& nodeToCopy){
     this->userId = nodeToCopy.userId;
     this->password = nodeToCopy.password;
@@ -14,8 +20,7 @@ Node::Node(Node& nodeToCopy){
     this->prev = nodeToCopy.prev;
 }
 
-Node::~Node(){
-}
+Node::~Node(){}
 
 std::string Node::generatePW(){
     //97 to 122
@@ -25,6 +30,8 @@ std::string Node::generatePW(){
     for (int i = 0; i < 9; i++){
         password += char(97 + ( rand() % (122 - 97) ));
     }
+
+    // this->encrypted = cypher.encrypt(password);
     return password;
 }
 
@@ -35,14 +42,6 @@ void Node::setUserId(std::string userId){
 void Node::setPassword(){
     if (password == "")
         this->password = generatePW();
-}
-
-void Node::setEncrypted(std::string encrypted){
-    this->encrypted = encrypted;
-}
-
-void Node::setPrev(Node* prev){
-    this->prev = prev;
 }
 
 void Node::setNext(Node* next){

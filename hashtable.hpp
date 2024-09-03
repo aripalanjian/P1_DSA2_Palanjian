@@ -15,6 +15,7 @@ public:
     void insert(Node* user);
     Node* lookup(std::string userId);
     int hash(std::string userId);
+    void checkHashDistribution();
 };
 
 #endif

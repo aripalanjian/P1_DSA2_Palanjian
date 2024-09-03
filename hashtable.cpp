@@ -21,13 +21,15 @@ void HashTable::insert(Node* user){
     if (head == nullptr){
         head = user;
     } else {
-        Node* current = head;
-        Node* next = head->getNext();
-        while(next != nullptr){
-            current = next;
-            next = next->getNext();
-        }
-        current->setNext(user);
+        user->setNext(head);
+        Table[bucket] = *user;
+        // Node* current = head;
+        // Node* next = head->getNext();
+        // while(next != nullptr){
+        //     current = next;
+        //     next = next->getNext();
+        // }
+        // current->setNext(user);
     }
 }
 
@@ -46,6 +48,32 @@ Node* HashTable::lookup(std::string userId){
     return checkedNode;
 }
 
-int HashTable::hash(std::string){
+int HashTable::hash(std::string userId){
+    int idVal = 0;
+    for (int i = 0; i < userId.length(); i++){
+        idVal += userId.at(i);
+    }
+    return idVal % size;
+}
 
+void HashTable::checkHashDistribution(){
+    int max = 0;
+    for (int i = 0; i < size; i++){
+        Node* head = &(Table[i]);
+        int cnt = 0;
+        if (head != nullptr){
+            Node*current = head;
+            cnt++;
+            while(current->getNext()!=nullptr){
+                current = current->getNext();
+                cnt++;
+            }
+        }
+
+        if (cnt>max){
+            max = cnt;
+        }
+    }
+
+    std::cout << "Max row size: " << max << std::endl;
 }

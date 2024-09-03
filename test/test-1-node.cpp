@@ -1,5 +1,6 @@
 #include <iostream>
 #include "../node.hpp"
+#include "../vigniere.hpp"
 
 void passwordTest(std::string pW){
     bool pWCheck =true;
@@ -22,12 +23,16 @@ int main(){
     std::string title = std::string(20, '#') + " Test 1 Node Class " + std::string(20, '#');
     std::cout << title << "\n";
 
+    Vigniere cypher = Vigniere();
+
     Node testNode = Node();
     std::cout << "Initialize Test Node Ari: \n";
     testNode.setUserId("Ari");
     testNode.setPassword();
 
     passwordTest(testNode.getPassword());
+    std::string encrypted = cypher.encrypt(testNode.getPassword());
+    std::cout << "Encrypted Password: " << encrypted << std::endl;
 
     std::cout << "Node1: " << testNode.getUserId() << " " << testNode.getPassword() << std::endl;
     

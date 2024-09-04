@@ -42,10 +42,7 @@ std::string Vigniere::decode(std::string encrypted){
         } else {
             keyPos = i;
         }
-        // std::cout << keyPos << std::endl;
-
-        // TODO:
-        //     Do opposite calculation 
+        
         int offset = int(key.at(keyPos)) - 97;
         int asciiValue;
         if (encrypted.at(i) == ' '){

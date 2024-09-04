@@ -19,28 +19,41 @@ void passwordTest(std::string pW){
     }
 }
 
+void cypherTest(std::string password){
+    Vigniere cypher = Vigniere();
+    std::string encrypted = cypher.encrypt(password);
+    std::cout << "Encrypted Password: " << encrypted << std::endl;
+    std::string decoded = cypher.decode(encrypted);
+    std::cout << "Decoded Password: " << decoded << std::endl;
+    if (decoded == password){
+        std::cout << "Password is a match\n";
+    } else {
+        std::cout << "Password is a match\n";
+    }
+}
+
 int main(){
     std::string title = std::string(20, '#') + " Test 1 Node Class " + std::string(20, '#');
     std::cout << title << "\n";
 
-    Vigniere cypher = Vigniere();
-
     Node testNode = Node();
-    std::cout << "Initialize Test Node Ari: \n";
+    std::cout << "Initializing Test Node\n";
     testNode.setUserId("Ari");
     testNode.setPassword();
 
     passwordTest(testNode.getPassword());
-    std::string encrypted = cypher.encrypt(testNode.getPassword());
-    std::cout << "Encrypted Password: " << encrypted << std::endl;
-    std::cout << "Decoded Password: " << cypher.decode(encrypted) << std::endl;
 
     std::cout << "Node1: " << testNode.getUserId() << " " << testNode.getPassword() << std::endl;
     
     std::cout << std::string(title.size(), '-') << "\nCopy Node Test:\n";
     Node copyTest = Node(testNode);
     testNode.setUserId("Ari2");
-    std::cout  << "Node1Copy: " << copyTest.getUserId() << " " << copyTest.getPassword() << std::endl;
+    std::cout << "Node1Copy: " << copyTest.getUserId() << " " << copyTest.getPassword() << std::endl;
     std::cout << "Node1NewName: " << testNode.getUserId() << " " << testNode.getPassword() << std::endl;
-    std::cout  << "Node1Copy: " << copyTest.getUserId() << " " << copyTest.getPassword() << std::endl;
+    std::cout << "Node1Copy: " << copyTest.getUserId() << " " << copyTest.getPassword() << std::endl;
+
+    std::cout << std::string(title.size(), '-') << "\nCypher Test:\n";
+    cypherTest(testNode.getPassword());
+
+    return 0;
 }

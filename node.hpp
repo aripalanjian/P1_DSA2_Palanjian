@@ -6,14 +6,12 @@
 class Node{
     std::string userId = "";
     std::string password = "";
-    std::string encrypted = "";
     Node* next = nullptr;
-    Node* prev = nullptr;
     std::string generatePW();
 public:
     Node(){};
-    Node(std::string userId, std::string encrypted);
     Node(std::string userId);
+    Node(std::string userId, std::string password);
     Node(Node& nodeToCopy);
     ~Node();
     void setUserId(std::string userId);
@@ -21,7 +19,6 @@ public:
     void setNext(Node* next);
     std::string getUserId();
     std::string getPassword();
-    std::string getEncrypted();
     Node* getNext();
 };
 

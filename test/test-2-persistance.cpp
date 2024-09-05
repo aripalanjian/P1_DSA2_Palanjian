@@ -44,9 +44,20 @@ void writeIDsAndPWs(std::string names){
     }
 }
 
+void readIDsAndPWsTest(){
+    std::cout << "\nRead Names File Test:\n";
+    ReadFile readIDsAndPWs = ReadFile("test/testPlainText.txt");
+    if (readIDsAndPWs.getIdsAndPWs()){
+        std::cout << "File successfully read.\nPrinting data...\n";
+        std::cout << readIDsAndPWs.getData() << std::endl;
+    } else {
+        std::cout << "Error: Unable to read file.\n";
+    }
+}
+
 int main(){
-    srand(time(0));
-    
+    srand(time(0));//must call srand outside of function because calls are to close together
+
     std::string title = std::string(17, '#') + " Test 2 Persistance Class " + std::string(16, '#');
     std::cout << title << "\n";
 
@@ -54,6 +65,9 @@ int main(){
 
     std::cout << std::string(title.size(), '-') << std::endl;
     writeIDsAndPWs(names);
+
+    std::cout << std::string(title.size(), '-') << std::endl;
+    readIDsAndPWsTest();
 
     return 0;
 }

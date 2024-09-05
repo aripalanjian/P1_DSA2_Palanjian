@@ -1,4 +1,5 @@
 #include "../persistance.hpp"
+#include "../vigniere.hpp"
 #include <cstdlib>
 #include <sstream>
 
@@ -17,8 +18,8 @@ std::string readInNamesTest(){
     std::cout << "\nRead Names File Test:\n";
     ReadFile readNames = ReadFile("names.txt");
     if (readNames.getNames()){
-        std::cout << "File successfully read.\nPrinting data...\n";
-        std::cout << readNames.getData() << std::endl;
+        std::cout << "File successfully read.\n";//Printing data...\n";
+        // std::cout << readNames.getData() << std::endl;
     } else {
         std::cout << "Error: Unable to read file.\n";
     }
@@ -44,14 +45,35 @@ void writeIDsAndPWs(std::string names){
     }
 }
 
-void readIDsAndPWsTest(){
+std::string readIDsAndPWsTest(){
     std::cout << "\nRead Names File Test:\n";
     ReadFile readIDsAndPWs = ReadFile("test/testPlainText.txt");
     if (readIDsAndPWs.getIdsAndPWs()){
-        std::cout << "File successfully read.\nPrinting data...\n";
-        std::cout << readIDsAndPWs.getData() << std::endl;
+        std::cout << "File successfully read.\n";
+        return readIDsAndPWs.getData();
     } else {
         std::cout << "Error: Unable to read file.\n";
+        return "";
+    }
+}
+
+void writeIDsAndEncryptPWs(std::string plainData){
+    std::stringstream ss(plainData);
+    std::string name;
+    std::string password;
+    std::string encrypted;
+    Vigniere cypher = Vigniere();
+
+    while(!ss.eof()){
+        ss >> name >> password;
+        encrypted += name + " " + cypher.encrypt(password) + "\n";
+    }
+
+    WriteFile storeEncrypted("test/testEncrypted.txt", encrypted);
+    if (storeEncrypted.writeToFile()){
+        std::cout << "Data successfully stored.\n";
+    } else {
+        std::cout << "Error: Unable to write to file.\n";
     }
 }
 
@@ -67,7 +89,12 @@ int main(){
     writeIDsAndPWs(names);
 
     std::cout << std::string(title.size(), '-') << std::endl;
-    readIDsAndPWsTest();
+    std::string data = readIDsAndPWsTest();
+
+    //need to encrypt data
+    std::cout << std::string(title.size(), '-') << std::endl;
+    writeIDsAndEncryptPWs(data);
+
 
     return 0;
 }

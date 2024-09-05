@@ -10,7 +10,6 @@ class Node{
     std::string generatePW();
 public:
     Node(){};
-    Node(std::string userId);
     Node(std::string userId, std::string password);
     Node(Node& nodeToCopy);
     ~Node();

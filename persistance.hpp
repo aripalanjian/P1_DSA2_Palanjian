@@ -9,16 +9,18 @@ class ReadFile{
 public:
     ReadFile(std::string file);
     ~ReadFile();
-    void readFromFile();
+    bool getNames();
+    bool getIdsAndPWs();
+    std::string getData();
 };
 
 class WriteFile{
     std::string file;
     std::string data;
 public:
-    WriteFile(std::string file);
+    WriteFile(std::string file, std::string data);
     ~WriteFile();
-    void writeToFile();
+    bool writeToFile();
 };
 
 #endif

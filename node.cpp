@@ -1,11 +1,6 @@
 #include "node.hpp"
 #include <cstdlib>
 
-Node::Node(std::string userId){
-    this->userId = userId;
-    this->password = generatePW();
-}
-
 Node::Node(std::string userId, std::string password){
     this->userId = userId;
     this->password = password;

@@ -7,11 +7,12 @@ class Node{
     std::string userId = "";
     std::string password = "";
     Node* next = nullptr;
-    std::string generatePW();
+    std::string generatePW(); //make free floating function
 public:
     Node(){};
     Node(std::string userId, std::string password);
     Node(Node& nodeToCopy);
+    Node& operator= (Node& nodeToCopy);
     ~Node();
     void setUserId(std::string userId);
     void setPassword();

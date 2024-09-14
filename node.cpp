@@ -12,6 +12,18 @@ Node::Node(Node& nodeToCopy){
     this->next = nodeToCopy.next;
 }
 
+Node& Node::operator= (Node& nodeToCopy){
+    if (this != &nodeToCopy){
+        delete next;
+
+        this->userId = nodeToCopy.userId;
+        this->password = nodeToCopy.password;
+        this->next = nodeToCopy.next;
+    }
+
+    return *this;
+}
+
 Node::~Node(){}
 
 std::string Node::generatePW(){

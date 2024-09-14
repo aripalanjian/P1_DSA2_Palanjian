@@ -23,7 +23,7 @@ bool ReadFile::getNames(){
             ss.clear();
             ss.str(line);
             ss >> name;
-            data += name + ' ';
+            data += name + "\n";
         }
         dataFile.close();
         ss.clear();
@@ -73,9 +73,10 @@ bool WriteFile::writeToFile(){
     std::ofstream outfile;
     outfile.open(file);
 
-    if (outfile.is_open()){
+    if (outfile.is_open()){       
+        
         while(std::getline(ss,line)){
-            outfile << line << std::endl;
+            outfile << line << "\n";
         }
 
         outfile.close();

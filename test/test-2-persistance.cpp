@@ -23,6 +23,10 @@ std::string readInNamesTest(){
     } else {
         std::cout << "Error: Unable to read file.\n";
     }
+    
+    //Debug
+    // WriteFile storeNames("test/testNames.txt", readNames.getData());
+    // storeNames.writeToFile();
 
     return readNames.getData();
 }
@@ -32,8 +36,7 @@ void writeIDsAndPWs(std::string names){
     std::string data = "";
     std::string name;
 
-    while(!namesSS.eof()){
-        namesSS >> name;
+    while(namesSS >> name){
         data += name + " " + generatePW() + "\n";
     }
     WriteFile storePlain("test/testPlainText.txt", data);
@@ -64,8 +67,7 @@ void writeIDsAndEncryptPWs(std::string plainData){
     std::string encrypted;
     Vigniere cypher = Vigniere();
 
-    while(!ss.eof()){
-        ss >> name >> password;
+    while(ss >> name >> password){
         encrypted += name + " " + cypher.encrypt(password) + "\n";
     }
 
@@ -91,10 +93,8 @@ int main(){
     std::cout << std::string(title.size(), '-') << std::endl;
     std::string data = readIDsAndPWsTest();
 
-    //need to encrypt data
     std::cout << std::string(title.size(), '-') << std::endl;
     writeIDsAndEncryptPWs(data);
-
 
     return 0;
 }

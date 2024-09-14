@@ -58,7 +58,7 @@ int HashTable::hash(std::string userId){
     for (unsigned i = 0; i < userId.length(); i++){
         idVal += int(userId.at(i));
     }
-    
+
     return idVal % (MAX_SIZE);
 }
 

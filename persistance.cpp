@@ -11,13 +11,13 @@ ReadFile::~ReadFile(){}
 bool ReadFile::getNames(){
     std::ifstream dataFile;
     dataFile.open(file);
-    std::cout << file << " attempting to open...\n";
+    // std::cout << file << " attempting to open...\n";
 
     std::stringstream ss;
     std::string line;
 
     if (dataFile.is_open()){
-        std::cout << "File " << file << " is open.\n";
+        // std::cout << "File " << file << " is open.\n";
         std::string name;
         while(std::getline(dataFile,line)){
             ss.clear();
@@ -35,12 +35,12 @@ bool ReadFile::getNames(){
 bool ReadFile::getIdsAndPWs(){
     std::ifstream dataFile;
     dataFile.open(file);
-    std::cout << file << " attempting to open...\n";
+    // std::cout << file << " attempting to open...\n";
 
     std::string line;
 
     if (dataFile.is_open()){
-        std::cout << "File " << file << " is open.\n";
+        // std::cout << "File " << file << " is open.\n";
 
         std::string name;
         std::string password;

@@ -1,2 +1,5 @@
 /.vscode
-notes.txt
+*.txt
+*.dia
+*.zip
+*.docx

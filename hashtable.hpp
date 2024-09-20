@@ -10,7 +10,7 @@
 #define HASHTABLE_HPP
 #define MAX_SIZE 211
 
-#include "Node.hpp"
+#include "node.hpp"
 
 class HashTable{
     Node** table;

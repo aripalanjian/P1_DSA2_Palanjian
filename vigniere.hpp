@@ -1,3 +1,11 @@
+/***************************************************************
+  Student Name: Ari Palanjian
+  File Name: viginiere.hpp
+  Assignment number: Project 1
+
+  Defines Vigniere class:
+    Encrypts or decrpyts a string based on a key
+***************************************************************/
 #ifndef VIGINIERE_HPP
 #define VIGINIERE_HPP
 

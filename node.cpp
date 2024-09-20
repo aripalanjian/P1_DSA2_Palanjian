@@ -1,3 +1,10 @@
+/***************************************************************
+  Student Name: Ari Palanjian
+  File Name: node.cpp
+  Assignment number: Project 1
+
+  Defines Node class functions
+***************************************************************/
 #include "node.hpp"
 #include <cstdlib>
 

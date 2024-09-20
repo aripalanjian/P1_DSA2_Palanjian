@@ -1,3 +1,10 @@
+/***************************************************************
+  Student Name: Ari Palanjian
+  File Name: vigniere.cpp
+  Assignment number: Project 1
+
+  Defines Vigniere member functions
+***************************************************************/
 #include "vigniere.hpp"
 
 Vigniere::Vigniere(){}

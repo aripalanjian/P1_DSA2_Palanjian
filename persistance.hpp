@@ -1,3 +1,10 @@
+/***************************************************************
+  Student Name: Ari Palanjian
+  File Name: persistance.hpp
+  Assignment number: Project 1
+
+  Defines the classes ReadFile and Writefile.
+***************************************************************/
 #ifndef PERSISTANCE_HPP
 #define PERSISTANCE_HPP
 

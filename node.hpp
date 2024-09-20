@@ -1,3 +1,10 @@
+/***************************************************************
+  Student Name: Ari Palanjian
+  File Name: node.hpp
+  Assignment number: Project 1
+
+  Defines Node class
+***************************************************************/
 #ifndef NODE_HPP
 #define NODE_HPP
 
@@ -7,7 +14,7 @@ class Node{
     std::string userId = "";
     std::string password = "";
     Node* next = nullptr;
-    std::string generatePW(); //make free floating function
+    std::string generatePW();
 public:
     Node(){};
     Node(std::string userId, std::string password);

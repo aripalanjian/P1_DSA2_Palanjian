@@ -1,3 +1,10 @@
+/***************************************************************
+  Student Name: Ari Palanjian
+  File Name: procControl.cpp
+  Assignment number: Project 1
+
+  Defines member functions of ProcControl.
+***************************************************************/
 #include "procControl.hpp"
 #include "persistance.hpp"
 #include <cstdlib>
@@ -28,11 +35,6 @@ std::string ProcControl::generatePW(){
 std::string ProcControl::readInNames(){
     ReadFile readNames = ReadFile("names.txt");
     readNames.getNames();
-    // if (readNames.getNames()){
-    //     std::cout << "File successfully read.\n";
-    // } else {
-    //     std::cout << "Error: Unable to read file.\n";
-    // }
 
     return readNames.getData();
 }
@@ -49,20 +51,13 @@ void ProcControl::writeIDsAndPWs(std::string names){
     
     storePlain.writeToFile();
     namesSS.flush();
-    // if (storePlain.writeToFile()){
-    //     std::cout << "Data successfully stored.\n";
-    // } else {
-    //     std::cout << "Error: Unable to write to file.\n";
-    // }
 }
 
 std::string ProcControl::readIDsAndPWs(){
     ReadFile readIDsAndPWs = ReadFile("rawdata.txt");
     if (readIDsAndPWs.getIdsAndPWs()){
-        // std::cout << "File successfully read.\n";
         return readIDsAndPWs.getData();
     } else {
-        // std::cout << "Error: Unable to read file.\n";
         return "";
     }
 }
@@ -88,20 +83,13 @@ void ProcControl::writeIDsAndEncryptPWs(std::string plainData){
 
     WriteFile storeEncrypted("encrypteddata.txt", encrypted);
     storeEncrypted.writeToFile();
-    // if (storeEncrypted.writeToFile()){
-    //     std::cout << "Data successfully stored.\n";
-    // } else {
-    //     std::cout << "Error: Unable to write to file.\n";
-    // }
 }
 
 std::string ProcControl::readIDsAndEncryptedPWs(){
     ReadFile readIDsAndPWs = ReadFile("encrypteddata.txt");
     if (readIDsAndPWs.getIdsAndPWs()){
-        // std::cout << "File successfully read.\n";
         return readIDsAndPWs.getData();
     } else {
-        // std::cout << "Error: Unable to read file.\n";
         return "";
     }
 }

@@ -1,3 +1,10 @@
+/***************************************************************
+  Student Name: Ari Palanjian
+  File Name: hashtable.cpp
+  Assignment number: Project 1
+
+  HashTable function definitions
+***************************************************************/
 #include "hashtable.hpp" 
  
 HashTable::HashTable(){
@@ -22,20 +29,14 @@ HashTable::~HashTable(){
 
 void HashTable::insert(Node* user){
     int bucket = hash(user->getUserId());
-    // Node* head = table[bucket];
 
     if (table[bucket] == nullptr){
         table[bucket] = user;
-        // std::cout << "Bucket " << bucket << " Head is null" << std::endl;
  
     } else {
         user->setNext(table[bucket]);
         table[bucket] = user;
-        // std::cout << "New head: " << table[bucket]->getUserId() << ", next: " << table[bucket]->getNext()->getUserId() << std::endl;
-        // std::cout << "Bucket " << bucket << " Head is not null" << std::endl;
     }
-
-    // std::cout << "Inserting " << user->getUserId() << " into bucket " << bucket << std::endl;
 }
 
 Node* HashTable::lookup(std::string userId){
@@ -70,14 +71,11 @@ void HashTable::checkHashDistribution(){
         if (head != nullptr){
             Node*current = head;
             cnt++;
-            // std::cout << "Bucket " << i << ": " << cnt << " - " << current->getUserId() << std::endl;
             while(current->getNext() !=nullptr){
                 current = current->getNext();
                 cnt++;
-                // std::cout << "Bucket " << i << ": " << cnt << " - " << current->getUserId() << std::endl;
             }
         }
-        // std::cout << "Bucket " << i << ": " << cnt << std::endl;
         if (cnt>max){
             max = cnt;
         }
